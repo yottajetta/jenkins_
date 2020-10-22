@@ -119,14 +119,6 @@ pipeline {
             }
           }
 
-          post {
-            success {
-              mail  to: 'dufaosnsk@gmail.com',
-                    subject: "Deploy Success",
-                    body: "Successfully deployed!"
-                  
-            }
-          }
         }
     }
 }
