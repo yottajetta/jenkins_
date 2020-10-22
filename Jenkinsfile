@@ -46,27 +46,6 @@ pipeline {
                 '''
             }
           }
-
-          post {
-              // If Maven was able to run the tests, even if some of the test
-              // failed, record the test results and archive the jar file.
-              success {
-                  echo 'Successfully Cloned Repository'
-
-                  mail  to: 'dufaosnsk@gmail.com',
-                        subject: "Deploy Frontend Success",
-                        body: "Successfully deployed frontend!"
-                  
-              }
-              failure {
-                  echo 'I failed :('
-
-                  mail  to: 'dufaosnsk@gmail.com',
-                        subject: "Failed Pipelinee",
-                        body: "Something is wrong with deploy frontend"
-              }
-          }
-        }
         
         stage('Lint Backend') {
             // Docker plugin and Docker Pipeline 두개를 깔아야 사용가능!
@@ -137,14 +116,7 @@ pipeline {
             }
           }
 
-          post {
-            success {
-              mail  to: 'dufaosnsk@gmail.com',
-                    subject: "Deploy Success",
-                    body: "Successfully deployed!"
-                  
-            }
-          }
+
         }
     }
 }
